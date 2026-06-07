@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function AddItemPage() {
+export default function AddItemPage({ items, setItems }) {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -9,8 +9,12 @@ export default function AddItemPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ name, price, category });
-    navigate('/'); // Returns to the home page after the item is added
+    
+    // Saves the item to menu list array
+    setItems([...items, { name, price, category }]);
+
+    // Navigates back to the main menu page
+    navigate('/'); 
   };
 
   return (
@@ -27,7 +31,7 @@ export default function AddItemPage() {
                 <input 
                   type="text" 
                   className="form-control form-control-lg" 
-                  placeholder="e.g., Croissant, Sourdough..." 
+                  placeholder="e.g., Biscuits, Sourdough..." 
                   value={name} 
                   onChange={e => setName(e.target.value)} 
                   required 
@@ -62,9 +66,9 @@ export default function AddItemPage() {
                   <option value="Pastries">Pastries</option>
                   <option value="Breads">Breads</option>
                   <option value="Sourdough">Sourdough</option>
-                  <option value="Hand_Pies">Hand Pies</option>
+                  <option value="Hand Pies">Hand Pies</option>
                   <option value="Cookies">Cookies</option>
-                  <option value="Take_and_Bake">Take and Bake</option>
+                  <option value="Take and Bake">Take and Bake</option>
                 </select>
               </div>
 
