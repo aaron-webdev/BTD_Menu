@@ -79,7 +79,7 @@ export default function MenuPage({ items, setItems }) {
       {/* Add Item button pinned bottom-right */}
       <div className="d-flex justify-content-end mt-4 fixed-bottom text-end px-2 py-2">
         <Link to="/add-item" className="btn btn-success btn-sm">
-          Add New Item
+          Edit Menu
         </Link>
       </div>
     </div>
