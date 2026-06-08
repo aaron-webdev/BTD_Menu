@@ -3,14 +3,14 @@ import { useState, useEffect } from 'react';
 import MenuPage from './pages/menuMainPage';
 import AddItemPage from './pages/addItemPage';
 
-const DEFAULT_MENU = [
+export const DEFAULT_MENU = [
   { id: 1, name: 'Honey Oat', price: '7.00', category: 'Breads', soldOut: false },
   { id: 2, name: 'Whole Wheat', price: '7.00', category: 'Breads', soldOut: false },
   { id: 3, name: 'Classic', price: '8.00', category: 'Sourdough', soldOut: false },
   { id: 4, name: 'Cranberry Rosemary', price: '8.00', category: 'Sourdough', soldOut: false },
   { id: 9, name: 'Jalapeno Cheddar', price: '8.00', category: 'Sourdough', soldOut: false },
-  { id: 5, name: 'Chocolate Chunk', price: '2.50', category: 'Cookies', soldOut: false },
-  { id: 6, name: 'Chocolate Chocolate Chunk', price: '2.50', category: 'Cookies', soldOut: false },
+  { id: 5, name: 'Chocolate Chunk', price: '4.00', category: 'Cookies', soldOut: false },
+  { id: 6, name: 'Chocolate Chocolate Chunk', price: '4.00', category: 'Cookies', soldOut: false },
   { id: 7, name: 'Buttermilk Biscuit', price: '4.00', category: 'Biscuits', soldOut: false },
   { id: 8, name: 'Cheddar Chive Biscuit', price: '4.00', category: 'Biscuits', soldOut: false },
 ];

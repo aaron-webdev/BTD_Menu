@@ -3,16 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CATEGORY_ORDER = ['Breads', 'Sourdough', 'Hand Pies', 'Cookies', 'Biscuits', 'Pastries', 'Take and Bake'];
 
-const DEFAULT_MENU = [
-  { id: 1, name: 'Classic White', price: '3.50', category: 'Breads', soldOut: false },
-  { id: 2, name: 'Whole Wheat', price: '3.75', category: 'Breads', soldOut: false },
-  { id: 3, name: 'Country Sourdough', price: '8.00', category: 'Sourdough', soldOut: false },
-  { id: 4, name: 'Rosemary Sourdough', price: '9.00', category: 'Sourdough', soldOut: false },
-  { id: 5, name: 'Chocolate Chip', price: '2.50', category: 'Cookies', soldOut: false },
-  { id: 6, name: 'Snickerdoodle', price: '2.50', category: 'Cookies', soldOut: false },
-  { id: 7, name: 'Buttermilk Biscuit', price: '2.00', category: 'Biscuits', soldOut: false },
-  { id: 8, name: 'Cheddar Biscuit', price: '2.50', category: 'Biscuits', soldOut: false },
-];
+import { DEFAULT_MENU } from '../App';
 
 export default function AddItemPage({ items, setItems }) {
   const navigate = useNavigate();
