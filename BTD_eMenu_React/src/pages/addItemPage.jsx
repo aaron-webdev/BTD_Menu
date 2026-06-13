@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function AddItemPage({ items, setItems }) {
+export default function AddItemPage({ items, setItems, defaultItems }) {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -17,9 +17,9 @@ export default function AddItemPage({ items, setItems }) {
     navigate('/'); 
   };
 
-  // Clear out the array back to the default empty state and go home
+  // Resets the menu array back to your hardcoded defaults
   const handleReset = () => {
-    setItems([]);
+    setItems(defaultItems);
     navigate('/');
   };
 
@@ -69,11 +69,12 @@ export default function AddItemPage({ items, setItems }) {
                   value={category} 
                   onChange={e => setCategory(e.target.value)}
                 >
-                  <option value="Pastries">Pastries</option>
                   <option value="Breads">Breads</option>
                   <option value="Sourdough">Sourdough</option>
-                  <option value="Hand Pies">Hand Pies</option>
                   <option value="Cookies">Cookies</option>
+                  <option value="Biscuits">Biscuits</option>
+                  <option value="Pastries">Pastries</option>
+                  <option value="Hand Pies">Hand Pies</option>
                   <option value="Take and Bake">Take and Bake</option>
                 </select>
               </div>
