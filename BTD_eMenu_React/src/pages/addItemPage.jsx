@@ -76,6 +76,7 @@ export default function AddItemPage({ items, setItems, defaultItems }) {
                   <option value="Pastries">Pastries</option>
                   <option value="Hand Pies">Hand Pies</option>
                   <option value="Take and Bake">Take and Bake</option>
+                  <option value="Scones">Scones</option>
                 </select>
               </div>
 

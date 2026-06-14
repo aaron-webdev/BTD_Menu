@@ -3,7 +3,7 @@ import GreetingBlock from './greetingBlock';
 
 export default function MenuPage({ items }) {
   // Define the exact list of categories to display as headers on the menu
-  const categories = ["Breads", "Sourdough", "Cookies", "Biscuits", "Pastries", "Hand Pies", "Take and Bake"];
+  const categories = ["Breads", "Sourdough", "Cookies", "Biscuits", "Pastries", "Hand Pies", "Take and Bake", "Scones"];
 
   return (
     <div className="container my-5">
