@@ -21,6 +21,9 @@ export default function AddItemPage({ items, setItems, defaultItems }) {
     navigate('/');
   };
 
+  // add function to remove specific items not just a full reset
+  // add sold out button beside the individual item delete button
+
   return (
     <div className="container my-5">
       <div className="row justify-content-center">
