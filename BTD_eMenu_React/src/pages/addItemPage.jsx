@@ -10,14 +10,12 @@ export default function AddItemPage({ items, setItems, defaultItems }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Saves the item to your menu list array
+    // Adds item to menu and returns to main page
     setItems([...items, { name, price, category }]);
-
-    // Navigates back to the main menu page
     navigate('/'); 
   };
 
-  // Resets the menu array back to your hardcoded defaults
+  // Sets menu to default
   const handleReset = () => {
     setItems(defaultItems);
     navigate('/');

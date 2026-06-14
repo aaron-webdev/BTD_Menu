@@ -13,8 +13,11 @@ export default function App() {
     { name: "Jalapeno Cheddar", price: "8.00", category: "Sourdough" },
     { name: "Chocolate Chunk", price: "4.00", category: "Cookies" },
     { name: "Chocolate Chocolate Chunk", price: "4.00", category: "Cookies" },
-    { name: "Buttermilk Biscuit", price: "4.00", category: "Biscuits" },
-    { name: "Cheddar Chive Biscuit", price: "4.00", category: "Biscuits" }
+    { name: "Classic Buttermilk", price: "4.00", category: "Biscuits" },
+    { name: "Goat Cheese and Herbes de Provence", price: "4.00", category: "Biscuits" },
+    { name: "Cheddar Cheese and Chive", price: "4.00", category: "Biscuits" },
+    { name: "Blueberry Lemon", price: "4.00", category: "Scones" },
+    { name: "Garden Veggie", price: "4.00", category: "Scones" }
   ];
 
   // Initialize the state with the default items
