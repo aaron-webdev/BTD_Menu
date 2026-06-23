@@ -9,4 +9,4 @@
 
 #### Future Upgrades
 - Built in "add an item"
-    - clicking the add button will allow the user to easily add new items with prices
+    - clicking the add button will allow the user to easily add new items with prices?git pull

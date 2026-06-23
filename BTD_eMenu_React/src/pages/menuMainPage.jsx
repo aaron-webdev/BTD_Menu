@@ -1,57 +1,122 @@
 import { Link } from 'react-router-dom';
-import GreetingBlock from './greetingBlock'; 
+import GreetingBlock from './greetingBlock';
 
-export default function MenuPage({ items }) {
+const CATEGORY_ORDER = ['Breads', 'Sourdough', 'Hand Pies', 'Cookies', 'Biscuits', 'Pastries', 'Take and Bake', 'Scones'];
 
-  const categories = ["Breads", "Sourdough", "Cookies", "Biscuits", "Pastries", "Hand Pies", "Take and Bake", "Scones"];
+export default function MenuPage({ items, setItems }) {
 
-  return (
-    <div className="container my-5">
-      <GreetingBlock />
+  function toggleSoldOut(id) {
+    setItems(prev =>
+      prev.map(item => item.id === id ? { ...item, soldOut: !item.soldOut } : item)
+    );
+  }
 
-      {/* Menu Display Field */}
-      <div className="row mt-4">
-        <div className="col px-3">
-          {items.length === 0 ? (
-            <div className="text-muted">
-              <p className="fs-5">No bakery items added yet. Click the button below to get started!</p>
-            </div>
+  // Build grouped categories, ordered by CATEGORY_ORDER
+  function buildGroups(flavorFilter) {
+    const grouped = [];
+
+    CATEGORY_ORDER.forEach(cat => {
+      const catItems = items.filter(i => i.category === cat && i.flavor === flavorFilter);
+      if (catItems.length > 0) grouped.push({ category: cat, catItems });
+    });
+
+    // Catch custom categories not in CATEGORY_ORDER
+    items.forEach(item => {
+      if (!CATEGORY_ORDER.includes(item.category) && item.flavor === flavorFilter) {
+        const existing = grouped.find(g => g.category === item.category);
+        if (existing) {
+          if (!existing.catItems.find(i => i.id === item.id)) existing.catItems.push(item);
+        } else {
+          grouped.push({ category: item.category, catItems: [item] });
+        }
+      }
+    });
+
+    return grouped;
+  }
+
+  const sweetGroups  = buildGroups('sweet');
+  const savoryGroups = buildGroups('savory');
+
+  function renderColumn(groups, columnLabel) {
+    return (
+      <div className="card border shadow-sm h-100">
+        <div className="card-body px-4 py-3">
+          {/* Column Header */}
+          <h2 className="text-center fw-bold text-uppercase border-bottom pb-2 mb-4"
+            style={{ letterSpacing: '0.08em', fontSize: '2rem' }}>
+            {columnLabel}
+          </h2>
+
+          {groups.length === 0 ? (
+            <p className="text-muted text-center">No items yet.</p>
           ) : (
-            <div>
-              {categories.map((category) => {
-                // Filter items by category
-                const filteredItems = items.filter(item => item.category === category);
-                
-                // Only show categories with items
-                if (filteredItems.length === 0) return null;
+            groups.map(({ category, catItems }) => (
+              <div key={category} className="mb-4">
+                {/* Category Title */}
+                <h5 className="fw-bold text-uppercase border-bottom pb-1 mb-2 text-secondary"
+                  style={{ letterSpacing: '0.05em', fontSize: '1.1rem' }}>
+                  {category}
+                </h5>
 
-                return (
-                  <div key={category} className="mb-4">
-                    {/* Category Header*/}
-                    <h5 className="text-uppercase fw-bold border-bottom pb-2 mb-3 letter-spacing">
-                      {category}
-                    </h5>
-                    
-                    {/*Items in category*/}
-                    <div className="mb-2">
-                      {filteredItems.map((item, index) => (
-                        <div key={index} className="py-2 d-flex justify-content-between align-items-center border-bottom border-light">
-                          <span className="text-dark fw-semibold fs-5">{item.name}</span>
-                          <span className="fw-bold text-success fs-5">${parseFloat(item.price).toFixed(2)}</span>
-                        </div>
-                      ))}
-                    </div>
+                {/* Items */}
+                {catItems.map(item => (
+                  <div
+                    key={item.id}
+                    onClick={() => toggleSoldOut(item.id)}
+                    className="d-flex justify-content-between align-items-center border-bottom py-2"
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <span style={{
+                      fontSize: '1.2rem',
+                      fontWeight: '500',
+                      color: item.soldOut ? '#aaa' : '#212529',
+                      textDecoration: item.soldOut ? 'line-through' : 'none',
+                    }}>
+                      {item.name}
+                    </span>
+                    <span style={{
+                      fontSize: '1.2rem',
+                      fontWeight: '700',
+                      color: item.soldOut ? '#aaa' : '#198754',
+                      marginLeft: '1rem',
+                      whiteSpace: 'nowrap',
+                    }}>
+                      ${parseFloat(item.price).toFixed(2)}
+                    </span>
                   </div>
-                );
-              })}
-            </div>
+                ))}
+              </div>
+            ))
           )}
         </div>
       </div>
+    );
+  }
 
-      {/* Edit Menu Button */}
-      <div className="d-flex justify-content-end mt-4 fixed-bottom text-end px-2 py-2">
-        <Link to="/add-item" className="btn btn-success btn-sm">
+  return (
+    <div className="container-fluid px-4 py-4">
+
+      {/* Greeting Section */}
+      <div className="card border mb-4 px-4 py-3">
+        <GreetingBlock />
+      </div>
+
+      {items.length === 0 && (
+        <div className="text-center text-muted fs-4 mt-5">
+          No bakery items added yet. Click Edit Menu to get started!
+        </div>
+      )}
+
+      {/* Sweet | Savory two-column layout */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+        {renderColumn(sweetGroups,  'Sweets')}
+        {renderColumn(savoryGroups, 'Savory')}
+      </div>
+
+      {/* Edit Menu button */}
+      <div style={{ position: 'fixed', bottom: '1rem', right: '1rem' }}>
+        <Link to="/add-item" className="btn btn-success">
           Edit Menu
         </Link>
       </div>
