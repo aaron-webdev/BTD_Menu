@@ -24,17 +24,14 @@ export default function GreetingBlock() {
   });
 
   return (
-    <div className="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
-      <div>
-        <h1 className="fw-bold text-dark mb-0">Happy {currentDay}!</h1>
-        <h3 className="text-muted mb-0 mt-1 fw-normal">You deserve to treat yourself!</h3>
-      </div>
-      {/* Clock Block */}
-      <div className="text-end">
-        <span className="fs-5 fw-bold text-success font-monospace px-3 py-1">
-          {formattedTime}
-        </span>
-      </div>
+    <div className="d-flex justify-content-between align-items-center w-200">
+      <h1 className="fw-bold text-dark mb-0 flex-grow-1 text-center">
+        Happy {currentDay}! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        You deserve to treat yourself!
+      </h1>
+      <span className="fs-1 fw-bold text-success font-monospace px-3 py-1 text-nowrap">
+        {formattedTime}
+      </span>
     </div>
   );
 }
