@@ -115,7 +115,7 @@ export default function MenuPage({ items, setItems }) {
       </div>
 
       {/* Edit Menu button */}
-      <div style={{ position: 'fixed', bottom: '1rem', right: '1rem' }}>
+      <div style={{ position: 'fixed', bottom: '0.5rem', right: '0.5rem' }}>
         <Link to="/add-item" className="btn btn-success">
           Edit Menu
         </Link>

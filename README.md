@@ -16,17 +16,17 @@
     - Goat Cheese and Herb
     - Cheddar Chive
 - Hand PIes         $5
-    - Blueberry Orange
-    - Mixed Berry
-    - Apple
-    - Ham and Cheddar
-    - Spinach Feta
+    - Blueberry Orange  (sweet)
+    - Mixed Berry       (sweet)
+    - Apple             (sweet)
+    - Ham and Cheddar   (savory)
+    - Spinach Feta      (savory)
 - Cookies           $4
     - Chocolate Chip
     - Double Chocolate Chip
 - Scones            $5
-    - Blueberry Lemon
-    - Savory 
+    - Blueberry Lemon   (sweet)
+    - Savory            (savory)
 - Take and Bake
     - Quiche                    $20
     - Biscuits (4 pack)         $12
