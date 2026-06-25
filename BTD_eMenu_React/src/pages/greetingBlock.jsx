@@ -24,14 +24,16 @@ export default function GreetingBlock() {
   });
 
   return (
-    <div className="d-flex justify-content-between align-items-center w-200">
-      <h1 className="fw-bold text-dark mb-0 flex-grow-1 text-center">
-        Happy {currentDay}! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        You deserve to treat yourself!
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', alignItems: 'center' }}>
+      <h1 className="fw-bold text-dark mb-0 text-center">
+        Happy {currentDay}!
       </h1>
-      <span className="fs-1 fw-bold text-success font-monospace px-3 py-1 text-nowrap">
+      <h3 className="fw-bold text-dark mb-0 text-center">
+        You deserve to treat yourself!
+      </h3>
+      <h3 className="fw-bold text-success font-monospace mb-0 text-center">
         {formattedTime}
-      </span>
+      </h3>
     </div>
   );
 }
