@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import GreetingBlock from './greetingBlock';
 
-const CATEGORY_ORDER = ['Breads', 'Sourdough', 'Hand Pies', 'Cookies', 'Biscuits', 'Pastries', 'Take and Bake', 'Scones'];
+const CATEGORY_ORDER = ['Hand Pies', 'Scones', 'Cookies', 'Breads', 'Sourdough', 'Biscuits', 'Take and Bake'];
 
 export default function MenuPage({ items, setItems }) {
 

@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DEFAULT_MENU } from '../App';
 
-const CATEGORY_ORDER = ['Breads', 'Sourdough', 'Hand Pies', 'Cookies', 'Biscuits', 'Pastries', 'Take and Bake', 'Scones'];
+const CATEGORY_ORDER = ['Breads', 'Sourdough', 'Hand Pies', 'Cookies', 'Biscuits', 'Take and Bake', 'Scones'];
 
-const ALWAYS_SWEET  = ['Cookies', 'Pastries'];
-const ALWAYS_SAVORY = ['Breads', 'Sourdough', 'Biscuits'];
+const ALWAYS_SWEET    = ['Cookies'];
+const ALWAYS_SAVORY   = ['Breads', 'Sourdough', 'Biscuits'];
+const HANDHELD_CATEGORIES = ['Hand Pies', 'Cookies', 'Biscuits', 'Scones'];
 
 function getAutoFlavor(category) {
   if (ALWAYS_SWEET.includes(category))  return 'sweet';
@@ -31,8 +32,17 @@ export default function AddItemPage({ items, setItems }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const resolvedFlavor = autoFlavor ?? flavor;
-    setItems([...items, { id: Date.now(), name, price, category, flavor: resolvedFlavor, soldOut: false }]);
+    const resolvedFlavor   = autoFlavor ?? flavor;
+    const resolvedHandheld = HANDHELD_CATEGORIES.includes(category);
+    setItems([...items, {
+      id: Date.now(),
+      name,
+      price,
+      category,
+      flavor:   resolvedFlavor,
+      handheld: resolvedHandheld,
+      soldOut:  false,
+    }]);
     setName('');
     setPrice('');
     setCategory('Breads');
